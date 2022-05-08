@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+console.log(motion);
 
 type Post = {
   id: number;
@@ -11,10 +13,14 @@ const PostsList = ({ data }: { data: Post[] }) => {
     <>
       {data.length &&
         data.map((post) => (
-          <div key={post.id}>
+          <motion.div
+            key={post.id}
+            animate={{ x: 100 }}
+            transition={{ delay: 1 }}
+          >
             <Image src={post.src} width={300} height={300} alt="Post picture" />
             <p>{post.text}</p>
-          </div>
+          </motion.div>
         ))}
     </>
   );
